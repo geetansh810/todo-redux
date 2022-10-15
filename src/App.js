@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import AddTodo from './components/AddTodo'
+import TodoBlock from './components/TodoBlock'
+import { removeTodo } from './services/actions'
+import { useDispatch } from 'react-redux'
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div className="main-div">
+      <div className="child-div">
+        <h1 className='fa' style={{ padding: 20 }}>TODO App</h1>
 
-export default App;
+        <figure>
+          <figcaption>Add your list here</figcaption>
+        </figure>
+
+        <AddTodo />
+        <TodoBlock />
+
+        <div>
+          <button className='btn effect04' data-sm-link-text="remove All" onClick={() => dispatch(removeTodo())}><span>Check All</span></button>
+        </div>
+
+      </div>
+    </div>
+  )
+}
+export default App
